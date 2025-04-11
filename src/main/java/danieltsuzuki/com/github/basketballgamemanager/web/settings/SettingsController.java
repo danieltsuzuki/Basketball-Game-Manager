@@ -2,6 +2,7 @@ package danieltsuzuki.com.github.basketballgamemanager.web.settings;
 
 import danieltsuzuki.com.github.basketballgamemanager.application.settings.SettingsService;
 import danieltsuzuki.com.github.basketballgamemanager.domain.settings.dto.SettingsDto;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class SettingsController {
     }
 
     @PutMapping
-    public ResponseEntity<SettingsDto> updateSettings(@RequestBody SettingsDto dto) {
+    public ResponseEntity<SettingsDto> updateSettings(@Valid @RequestBody SettingsDto dto) {
         return ResponseEntity.ok(service.updateSettings(dto));
     }
 }

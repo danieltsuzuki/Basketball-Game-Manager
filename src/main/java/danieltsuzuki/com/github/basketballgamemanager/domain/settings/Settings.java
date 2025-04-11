@@ -16,8 +16,8 @@ public class Settings {
 
     public Settings() {}
     public Settings(Long id, int time, int maxScore, boolean isActivePlayer) {
-        if (time <= 0) throw new IllegalArgumentException("Time deve ser maior que 0");
-        if (maxScore <= 0) throw new IllegalArgumentException("MaxScore deve ser maior que 0");
+        if (time <= 0) throw new IllegalArgumentException("Time must be greater than 0");
+        if (maxScore <= 0) throw new IllegalArgumentException("MaxScore must be greater than 0");
         this.id = id;
         this.time = time;
         this.maxScore = maxScore;
