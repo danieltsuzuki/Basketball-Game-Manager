@@ -1,0 +1,1 @@
+INSERT INTO settings values (1, 8, 12, false);
