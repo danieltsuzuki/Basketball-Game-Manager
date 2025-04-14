@@ -1,8 +1,10 @@
 package danieltsuzuki.com.github.basketballgamemanager.application.settings;
 
+import danieltsuzuki.com.github.basketballgamemanager.domain.exception.NotFoundException;
 import danieltsuzuki.com.github.basketballgamemanager.domain.settings.Settings;
 import danieltsuzuki.com.github.basketballgamemanager.domain.settings.dto.SettingsDto;
 import danieltsuzuki.com.github.basketballgamemanager.infrastructure.settings.SettingsRepository;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,10 +21,10 @@ public class SettingsService {
     public SettingsDto getSettings() {
         Optional<Settings> settings = settingsRepository.findById(1L);
         return settings.map(s -> new SettingsDto(s.getTime(), s.getMaxScore(), s.isActivePlayer()))
-                .orElseThrow(() -> new RuntimeException("Configuração encontrada"));
+                .orElseThrow(() -> new NotFoundException("Settings not found!"));
     }
 
-    public SettingsDto updateSettings(SettingsDto dto) {
+    public SettingsDto updateSettings(@Valid SettingsDto dto) {
         Settings settings = new Settings(1L, dto.time(), dto.maxScore(), dto.isActivePlayer());
         Settings saved = settingsRepository.save(settings);
         return new SettingsDto(saved.getTime(), saved.getMaxScore(), saved.isActivePlayer());

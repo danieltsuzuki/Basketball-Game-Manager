@@ -1,5 +1,6 @@
 package danieltsuzuki.com.github.basketballgamemanager.application.settings;
 
+import danieltsuzuki.com.github.basketballgamemanager.domain.exception.NotFoundException;
 import danieltsuzuki.com.github.basketballgamemanager.domain.settings.Settings;
 import danieltsuzuki.com.github.basketballgamemanager.domain.settings.dto.SettingsDto;
 import danieltsuzuki.com.github.basketballgamemanager.infrastructure.settings.SettingsRepository;
@@ -40,8 +41,8 @@ class SettingsServiceTest {
     void shouldThrowExceptionWhenSettingsDoesNotExist() {
         when(repository.findById(1L)).thenReturn(Optional.empty());
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> service.getSettings());
-        assertEquals("Configuração encontrada", exception.getMessage());
+        RuntimeException exception = assertThrows(NotFoundException.class, () -> service.getSettings());
+        assertEquals("Settings not found!", exception.getMessage());
     }
 
     @Test

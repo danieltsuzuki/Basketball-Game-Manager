@@ -1,0 +1,1 @@
+INSERT INTO teams values (1, 'Time A'), (2, 'Time B');
