@@ -1,6 +1,5 @@
 package danieltsuzuki.com.github.basketballgamemanager.domain.team;
 
-import danieltsuzuki.com.github.basketballgamemanager.domain.settings.Settings;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
